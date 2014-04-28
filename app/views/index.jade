@@ -16,7 +16,7 @@ block body
                 -each error in form.name.errors
                   p.error= error
 
-              =form.name()
+              =form.name(class_="form-control")
 
             .form-group
               =form.email.label()
@@ -25,7 +25,7 @@ block body
                 -each error in form.email.errors
                   p.error= error
 
-              =form.email()
+              =form.email(class_="form-control")
 
             .form-group
               =form.email_confirm.label()
@@ -34,7 +34,7 @@ block body
                 -each error in form.email_confirm.errors
                   p.error= error
 
-              =form.email_confirm()
+              =form.email_confirm(class_="form-control")
 
             .form-group
               =form.phone.label()
@@ -43,7 +43,7 @@ block body
                 -each error in form.phone.errors
                   p.error= error
 
-              =form.phone()
+              =form.phone(class_="form-control")
 
             .form-group
               =form.submit(class_="btn btn-primary")
