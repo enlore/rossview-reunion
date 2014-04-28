@@ -1,2 +1,3 @@
 instance/
 .webassets-cache
+*.css

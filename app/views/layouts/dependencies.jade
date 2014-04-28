@@ -1,0 +1,7 @@
+link(rel="stylehseet", href="#{url_for('static', filename='css/vendor/bootstrap.min.css')}")
+
+{% assets "css" %}
+<link rel="stylesheet" href="{{ ASSET_URL }}">
+{% endassets %}
+
+script(src="#{url_for('static', filename='js/vendor/respond.min.js')}")

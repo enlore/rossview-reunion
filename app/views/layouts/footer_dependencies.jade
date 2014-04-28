@@ -1,0 +1,6 @@
+script(src="#{url_for('static', filename='js/vendor/jquery-2.1.0.min.js')}")
+script(src="#{url_for('static', filename='js/vendor/bootstrap.min.js')}")
+
+{% assets "js" %}
+<script src="{{ ASSET_URL }}"></script>
+{% endassets %}

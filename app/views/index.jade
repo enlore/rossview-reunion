@@ -1,51 +1,53 @@
 extends layouts/base.jade
 block body
-  h1 here we go
-  -if form
-    form(action="#{url_for('index')}", method="post")
-      input(type="hidden", value="#{csrf_token()}", name="csrf_token")
-      =form.squirrel(class_="shh")
+  .attendance-form.container
+    .row
+      .col-sm-12
+        -if form
+          form(action="#{url_for('index')}", method="post")
+            input(type="hidden", value="#{csrf_token()}", name="csrf_token")
+            =form.squirrel(class_="shh")
 
-      .form-group
-        p.hint If you're married, give us your maiden name.
-        =form.name.label()
+            .form-group
+              p.hint If you're married, give us your maiden name.
+              =form.name.label()
 
-        -if form.name.errors
-          -each error in form.name.errors
-            p.error= error
+              -if form.name.errors
+                -each error in form.name.errors
+                  p.error= error
 
-        =form.name()
+              =form.name()
 
-      .form-group
-        =form.email.label()
+            .form-group
+              =form.email.label()
 
-        -if form.email.errors
-          -each error in form.email.errors
-            p.error= error
+              -if form.email.errors
+                -each error in form.email.errors
+                  p.error= error
 
-        =form.email()
+              =form.email()
 
-      .form-group
-        =form.email_confirm.label()
+            .form-group
+              =form.email_confirm.label()
+              
+              -if form.email_confirm.errors
+                -each error in form.email_confirm.errors
+                  p.error= error
+
+              =form.email_confirm()
+
+            .form-group
+              =form.phone.label()
+
+              -if form.phone.errors
+                -each error in form.phone.errors
+                  p.error= error
+
+              =form.phone()
+
+            .form-group
+              =form.submit(class_="btn btn-primary")
+
         
-        -if form.email_confirm.errors
-          -each error in form.email_confirm.errors
-            p.error= error
-
-        =form.email_confirm()
-
-      .form-group
-        =form.phone.label()
-
-        -if form.phone.errors
-          -each error in form.phone.errors
-            p.error= error
-
-        =form.phone()
-
-      .form-group
-        =form.submit(class_="btn btn-primary")
-
-  
-  -else
-    h2 Whar's the form?
+        -else
+          h2 Whar's the form?
