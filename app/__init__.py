@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
 from forms import ApplicationForm
 from flask.ext.assets import Environment, Bundle
+from flask_wtf import CsrfProtect
+
 
 def create_app(instance_path=None, debug=False):
     use_instances = False
@@ -22,6 +24,8 @@ def create_app(instance_path=None, debug=False):
     app.config.from_pyfile('config.py')
     app.config.from_object('app.config')
 
+    CsrfProtect(app)
+
     assets = Environment(app)
     
     css_bundle = Bundle('less/main.less', output='css/main.css', filters='less')
@@ -35,7 +39,13 @@ def create_app(instance_path=None, debug=False):
         form = ApplicationForm()
 
         if form.validate_on_submit():
-            pass
+            form_data = "name: {}\nemail: {}\nphone: {}\n\n".format(
+                    form.name.data,
+                    form.email.data,
+                    form.phone.data
+                    )
+            app.logger.info(form_data)
+            return redirect(url_for('index'))
 
         return render_template('index.jade', form=form)
 

@@ -7,8 +7,8 @@ from wtforms.validators import Required, EqualTo
 class ApplicationForm(Form):
     squirrel            = TextField("")
 
-    name_msg            = "We need to know who you are."
-    name                = TextField("Your name", [Required(name_msg)])
+    name_msg            = "Please provide your full name. This helps us find you faster!"
+    name                = TextField("Full name", [Required(name_msg)])
 
     email_msg           = "Your email is required."
     email               = EmailField('Your Email', [Required(email_msg)])
@@ -18,11 +18,8 @@ class ApplicationForm(Form):
     email_confirm       = EmailField('Confirm Your Email', 
                             [
                                 Required(email_confirm_req),
-                                EqualTo('confirm_email', message=email_confirm_msg)
+                                EqualTo('email', message=email_confirm_msg)
                             ])
-
-    name_msg            = "Please provide your full name. This helps us find you faster!"
-    name                = TextField("Full name", [Required(name_msg)])
 
     phone_message       = "We need your phone number, please."
     phone               = TextField("Your Phone Number", [Required(phone_message)])
