@@ -21,41 +21,42 @@ block body
                 =form.name.label(class_="col-sm-4")
 
                 .col-sm-8
+                  =form.name(class_="form-control")
+
                   -if form.name.errors
                     -each error in form.name.errors
                       p.error= error
 
-                  =form.name(class_="form-control")
 
               .form-group
                 =form.email.label(class_="col-sm-4")
 
                 .col-sm-8
+                  =form.email(class_="form-control")
+
                   -if form.email.errors
                     -each error in form.email.errors
                       p.error= error
-
-                  =form.email(class_="form-control")
 
               .form-group
                 =form.email_confirm.label(class_="col-sm-4")
                 
                 .col-sm-8
+                  =form.email_confirm(class_="form-control")
+
                   -if form.email_confirm.errors
                     -each error in form.email_confirm.errors
                       p.error= error
-
-                  =form.email_confirm(class_="form-control")
 
               .form-group
                 =form.phone.label(class_="col-sm-4")
 
                 .col-sm-8
+                  =form.phone(class_="form-control")
+
                   -if form.phone.errors
                     -each error in form.phone.errors
                       p.error= error
-
-                  =form.phone(class_="form-control")
 
               .form-group
                 .col-sm-4.col-sm-offset-4
