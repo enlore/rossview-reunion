@@ -1,7 +1,6 @@
 extends layouts/base.jade
 block body
   img.polaroids-bg(src="#{url_for('static', filename='img/polaroids.jpg')}")
-  .sidebar
 
   .attendance-form.attendance-form-bg
     .container
@@ -65,5 +64,6 @@ block body
           
           -else
             h2 Whar's the form?
+  .sidebar
   .footer
     p Bespoke experience by <a href="#">E | L Creative Group</a>

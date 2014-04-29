@@ -1,5 +1,6 @@
-@small: 768px;
+@tablet-portrait: 768px;
 
+html, body { height: 100%; }
 body {
     color: #fff;
 }
@@ -36,10 +37,15 @@ body {
     background-color: rgba(50,50,50, 0.8);
 }
 
-@media screen and (min-width: @small) {
+.attendance-form {
+    width: 100%;
+}
+
+@media screen and (min-width: @tablet-portrait) {
     .attendance-form {
-        position: relative;
-        top: 100px;
+        position: absolute;
+        top: 45%;
+        margin-top: -170px;
     }
 }
 
@@ -47,7 +53,7 @@ body {
     display: none;
 }
 
-@media screen and (min-width: @small) {
+@media screen and (min-width: @tablet-portrait) {
     .sidebar {
         display: block; 
         background-color: #000;
@@ -67,7 +73,7 @@ body {
     p { margin: 0; }
 }
 
-@media screen and (min-width: @small) {
+@media screen and (min-width: @tablet-portrait) {
     .footer {
         position: fixed; 
         bottom: 0;
