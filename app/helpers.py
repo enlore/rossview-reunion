@@ -25,12 +25,15 @@ class FlaskMailgunMessage(EmailBase):
                 body=''
                 )
         
-    def send(self, body, html=False):
+    def send(self, body, html=False, **kwargs):
         data = {
             "from"  : self.from_,
             "to"    : self.to,
             "subject": self.subject,
             }
+
+        for key, val in kwargs.items():
+            data['o:' + key] = val
 
         if html:
             data['html'] = body
