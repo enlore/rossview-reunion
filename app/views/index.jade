@@ -1,70 +1,71 @@
 extends layouts/base.jade
 block body
-  img.polaroids-bg(src="#{url_for('static', filename='img/polaroids.jpg')}")
+  img.polaroids-bg(src="#{url_for('static', filename='img/banner.jpg')}")
 
-  .attendance-form.attendance-form-bg
-    .container
-      .row
-        .col-sm-8.col-sm-offset-2
-          h1 Rossview Class of 2004 Reunion
-          p Fill this out and we'll send you a link to buy your ticket!
-          p.hint If you're married, give us your maiden name.
+  .wrappa
+    .attendance-form.attendance-form-bg
+      .container
+        .row.copy
+          .col-sm-8.col-sm-offset-2
+            h1.font-graduate Rossview Class of 2004 Reunion
+            p Fill this out and we'll send you a link to buy your ticket!
+            p.hint If you're married, give us your maiden name.
 
-      .row
-        .col-sm-8.col-sm-offset-2
-          -if form
-            form.form-horizontal(action="#{url_for('index')}", method="post")
-              input(type="hidden", value="#{csrf_token()}", name="csrf_token")
-              =form.squirrel(class_="shh")
+        .row
+          .col-sm-8.col-sm-offset-2
+            -if form
+              form.form-horizontal(action="#{url_for('index')}", method="post")
+                input(type="hidden", value="#{csrf_token()}", name="csrf_token")
+                =form.squirrel(class_="shh")
 
-              .form-group
-                =form.name.label(class_="col-sm-4")
+                .form-group
+                  =form.name.label(class_="col-sm-4")
 
-                .col-sm-8
-                  =form.name(class_="form-control")
+                  .col-sm-8
+                    =form.name(class_="form-control")
 
-                  -if form.name.errors
-                    -each error in form.name.errors
-                      p.error= error
+                    -if form.name.errors
+                      -each error in form.name.errors
+                        p.error= error
 
 
-              .form-group
-                =form.email.label(class_="col-sm-4")
+                .form-group
+                  =form.email.label(class_="col-sm-4")
 
-                .col-sm-8
-                  =form.email(class_="form-control")
+                  .col-sm-8
+                    =form.email(class_="form-control")
 
-                  -if form.email.errors
-                    -each error in form.email.errors
-                      p.error= error
+                    -if form.email.errors
+                      -each error in form.email.errors
+                        p.error= error
 
-              .form-group
-                =form.email_confirm.label(class_="col-sm-4")
-                
-                .col-sm-8
-                  =form.email_confirm(class_="form-control")
+                .form-group
+                  =form.email_confirm.label(class_="col-sm-4")
+                  
+                  .col-sm-8
+                    =form.email_confirm(class_="form-control")
 
-                  -if form.email_confirm.errors
-                    -each error in form.email_confirm.errors
-                      p.error= error
+                    -if form.email_confirm.errors
+                      -each error in form.email_confirm.errors
+                        p.error= error
 
-              .form-group
-                =form.phone.label(class_="col-sm-4")
+                .form-group
+                  =form.phone.label(class_="col-sm-4")
 
-                .col-sm-8
-                  =form.phone(class_="form-control")
+                  .col-sm-8
+                    =form.phone(class_="form-control")
 
-                  -if form.phone.errors
-                    -each error in form.phone.errors
-                      p.error= error
+                    -if form.phone.errors
+                      -each error in form.phone.errors
+                        p.error= error
 
-              .form-group
-                .col-sm-4.col-sm-offset-4
-                  =form.submit(class_="btn btn-primary")
+                .form-group
+                  .col-sm-4.col-sm-offset-4
+                    =form.submit(class_="btn btn-lg btn-form-cta")
 
-          
-          -else
-            h2 Whar's the form?
-  .sidebar
-  .footer
-    p Bespoke experience by <a href="#">E | L Creative Group</a>
+            
+            -else
+              h2 Whar's the form?
+    .sidebar
+    .footer
+      p Bespoke experience by <a href="#">E | L Creative Group</a>
