@@ -3,8 +3,10 @@ from forms import ApplicationForm
 from flask.ext.assets import Environment, Bundle
 from flask_wtf import CsrfProtect
 
+from helpers import FlaskMailgunMessage
 
-def create_app(instance_path=None, debug=False):
+
+def create_app(instance_path=None, debug=False, test=False):
     use_instances = False
 
     if instance_path is not None:
@@ -21,10 +23,12 @@ def create_app(instance_path=None, debug=False):
 
     app.debug = debug
     app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
-    app.config.from_pyfile('config.py')
-    app.config.from_object('app.config')
 
-    CsrfProtect(app)
+    app.config.from_object('app.config')
+    app.config.from_pyfile('config.py')
+
+    if not test:
+        CsrfProtect(app)
 
     assets = Environment(app)
     
@@ -33,6 +37,8 @@ def create_app(instance_path=None, debug=False):
 
     js_bundle = Bundle('js/main.js', output="main.min.js", filters="rjsmin")
     assets.register('js', js_bundle)
+
+    email = FlaskMailgunMessage(app)
 
     @app.route('/', methods=['GET', 'POST'])
     def index():
@@ -45,6 +51,10 @@ def create_app(instance_path=None, debug=False):
                     form.phone.data
                     )
             app.logger.info(form_data)
+
+            # send the email
+            email.send(form_data)
+
             return redirect(url_for('index'))
 
         return render_template('index.jade', form=form)
