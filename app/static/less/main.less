@@ -1,9 +1,35 @@
 @tablet-portrait: 768px;
 
+@red: #EE4B30;
+@headline: @red;
+@cta-button: @red;
+
+@gold: #DD9F00;
+@cta-active-fg: @gold;
+
 html, body { height: 100%; }
-body {
-    color: #fff;
+body { color: #fff; }
+
+h1, h2, h3 {
+    color: @headline;
 }
+
+h1 { font-size: 36px; }
+
+.copy {
+    text-align: right;
+}
+
+.btn-form-cta {
+    background-color: @cta-button;
+    &:hover, 
+    &:focus {
+        color: @cta-active-fg; 
+    }
+}
+
+.font-graduate { font-family: Graduate, 'cursive'; }
+
 .shh {
     display: none;
 }
@@ -12,11 +38,25 @@ body {
     border-radius: 16px;
 }
 
+.error {
+    
+}
+
+.wrappa {
+    padding-top: 3em;
+}
+
+@media screen and (min-width: @tablet-portrait) {
+    .wrappa {
+        padding-top: 0; 
+    }
+}
+
 .polaroids-bg {
     position: fixed;
     top: 0;
     left: 0;
-    min-width: 1024px;
+    min-width: 1624px;
     min-height: 100%;
 
     width: 100%;
@@ -25,10 +65,10 @@ body {
     z-index: -100;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1624px) {
     .polaroids-bg {
         left: 50%; 
-        margin-left: -512px;
+        margin-left: -812px;
     }
 }
 
@@ -55,7 +95,7 @@ body {
 
 @media screen and (min-width: @tablet-portrait) {
     .sidebar {
-        display: block; 
+        //display: block; 
         background-color: #000;
         width: 100px;
         height: 100%;
