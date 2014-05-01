@@ -7,6 +7,9 @@ instance_path = os.path.join(cwd, 'instance')
 env.hosts = ['198.23.165.64']
 env.user = 'no'
 
+def test():
+    local('py.test')
+
 def d():
     """Run in debug mode"""
     local('python manage.py run -i {} -D true'.format(instance_path))
