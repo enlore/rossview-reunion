@@ -8,7 +8,7 @@ class ApplicationForm(Form):
     squirrel            = TextField("")
 
     name_msg            = "Please provide your full name. This helps us find you faster!"
-    name                = TextField("Full name", [Required(name_msg)])
+    name                = TextField("Your Full Name", [Required(name_msg)])
 
     email_msg           = "Your email is required."
     email               = EmailField('Your Email', [Required(email_msg)])
@@ -24,4 +24,4 @@ class ApplicationForm(Form):
     phone_message       = "We need your phone number, please."
     phone               = TextField("Your Phone Number", [Required(phone_message)])
 
-    submit              = SubmitField("Send Your Application")
+    submit              = SubmitField("Send Us Your Application!")

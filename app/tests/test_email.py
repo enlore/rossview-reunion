@@ -20,6 +20,15 @@ def client(app):
 
     return app.test_client()
 
+def test_flashes(client, app):
+    resp = client.post('/', data={
+            "name": "bob",
+            "email": "oneofy@gmail.com",
+            "phone": "123456"
+        })
+
+    assert app.config['THANKS_FLASH'] in resp.data
+
 def test_email_to_field_is_list():
     email = Email('bob', 'edd', 'Hi Edd', 'Hey man how are you')
     assert list == type(email.to)

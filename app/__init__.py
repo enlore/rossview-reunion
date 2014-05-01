@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, flash
 from forms import ApplicationForm
 from flask.ext.assets import Environment, Bundle
 from flask_wtf import CsrfProtect
@@ -54,6 +54,8 @@ def create_app(instance_path=None, debug=False, test=False):
 
             # send the email
             email.send(form_data)
+
+            flash(app.config['THANKS_FLASH'])
 
             return redirect(url_for('index'))
 

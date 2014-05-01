@@ -4,19 +4,25 @@
 @headline: @red;
 @cta-button: @red;
 
-@gold: #DD9F00;
-@cta-active-fg: @gold;
+@light-orange: #FFCC00;
+@error-flash: @light-orange;
+@success-flash: @light-orange;
+@cta-active-fg: @light-orange;
 
 @that-teal: #00C4C6;
 
 html, body { height: 100%; }
 body { color: #fff; }
+ul { list-style: none; }
 
 h1, h2, h3 {
-    color: @headline;
+    color: @headline; 
+    .font-graduate;
 }
 
 h1 { font-size: 36px; }
+
+p, label, button, input, a { .font-oxygen; }
 
 .copy {
     text-align: right;
@@ -32,15 +38,29 @@ h1 { font-size: 36px; }
 }
 
 .font-graduate { font-family: Graduate, 'cursive'; }
+.font-oxygen { font-family: Oxygen, sans-serif; }
 
 .shh { display: none; }
 .form-control { border-radius: 16px; }
 
 .error {
-    
+    margin: 0;
+    padding-left: 10px;
+    color: @error-flash;
+    font-size: 16px;
+    span { 
+        font-size: 22px;
+        &:after { content: " ";}
+    }
 }
 
-.wrappa { padding-top: 3em; }
+.flashes {
+    li {
+        color: @success-flash; 
+    }
+}
+
+.wrappa { padding-top: 3em; padding-bottom: 3em; }
 
 @media screen and (min-width: @tablet-portrait) {
     .wrappa {

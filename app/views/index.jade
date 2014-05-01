@@ -3,13 +3,20 @@ block body
   img.polaroids-bg(src="#{url_for('static', filename='img/banner.jpg')}")
 
   .wrappa
+
     .attendance-form.attendance-form-bg
       .container
         .row.copy
           .col-sm-8.col-sm-offset-2
             h1.font-graduate Rossview Class of 2004 Reunion
             p Fill this out and we'll send you a link to buy your ticket!
-            p.hint If you're married, give us your maiden name.
+            p.hint If you're married, please give us your maiden name.
+
+            .flashes
+              ul
+                -each flash in get_flashed_messages()
+                  li= flash
+
 
         .row
           .col-sm-8.col-sm-offset-2
@@ -26,7 +33,7 @@ block body
 
                     -if form.name.errors
                       -each error in form.name.errors
-                        p.error= error
+                        p.error <span class="glyphicon glyphicon-asterisk"></span>#{error}
 
 
                 .form-group
@@ -37,7 +44,7 @@ block body
 
                     -if form.email.errors
                       -each error in form.email.errors
-                        p.error= error
+                        p.error <span class="glyphicon glyphicon-asterisk"></span>#{error}
 
                 .form-group
                   =form.email_confirm.label(class_="col-sm-4")
@@ -47,7 +54,7 @@ block body
 
                     -if form.email_confirm.errors
                       -each error in form.email_confirm.errors
-                        p.error= error
+                        p.error <span class="glyphicon glyphicon-asterisk"></span>#{error}
 
                 .form-group
                   =form.phone.label(class_="col-sm-4")
@@ -57,7 +64,7 @@ block body
 
                     -if form.phone.errors
                       -each error in form.phone.errors
-                        p.error= error
+                        p.error <span class="glyphicon glyphicon-asterisk"></span>#{error}
 
                 .form-group
                   .col-sm-4.col-sm-offset-4
@@ -68,4 +75,4 @@ block body
               h2 Whar's the form?
     .sidebar
     .footer
-      p Bespoke experience by <a href="http://elcreativegroup.com" target="blank_">E | L Creative Group</a>
+      p Bespoke Experience by <a href="http://elcreativegroup.com" target="blank_">E | L Creative Group</a>
