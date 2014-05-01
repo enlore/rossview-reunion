@@ -4,3 +4,4 @@ instance/
 stuff
 tests/__pycache__
 *.pyc
+*.egg-info
