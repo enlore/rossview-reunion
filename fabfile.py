@@ -34,9 +34,8 @@ def deploy():
     run('touch /var/www/rhs04reunion.com/instance/config.py')
 
 def restart_remote():
-    # stop app server
-    # start app server
-    print "IMPLEMENT ME"
+    sudo('stop rhs04reunion.com')
+    sudo('start rhs04reunion.com')
 
 def ship():
     pack()
