@@ -45,6 +45,11 @@ def create_app(instance_path=None, debug=False, test=False):
         form = ApplicationForm()
 
         if form.validate_on_submit():
+            if form.squirrel.data:
+                # ANTI SPAM YO
+                app.logger.info('SECRET SQUIRREL')
+                return redirect(url_for('index'))
+
             form_data = "name: {}\nemail: {}\nphone: {}\n\n".format(
                     form.name.data,
                     form.email.data,
